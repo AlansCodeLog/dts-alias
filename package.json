@@ -8,8 +8,9 @@
 		"babel:run:dev": "npx onchange -i \"src/**/*.ts\" -- npx babel-node --extensions \".ts,.js\" --",
 
 		"build:babel": "npx babel --extensions \".ts,.js\" src --out-dir bin --source-maps inline",
+		"build:shebang": "node -e \"const fs = require('fs'); fs.writeFileSync('./bin/index.js', '#!/usr/bin/env node\\n' + fs.readFileSync('./bin/index.js'))\"",
 		"build:watch": "npm run build:babel -- --watch",
-		"build": "npm run build:babel",
+		"build": "npm run build:babel && npm run build:shebang",
 
 		"lint:eslint": "npx eslint \"src/**/*.ts\" --max-warnings=0",
 		"lint:types": "npx tsc --noEmit --pretty",
