@@ -1,0 +1,28 @@
+// https://www.typescriptlang.org/tsconfig/
+{
+	// ./node_modules/@alanscodelog/tsconfigs/tsconfig.json
+	// https://github.com/AlansCodeLog/my-tsconfigs
+	"extends": "@alanscodelog/tsconfigs",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [ "src/*" ],
+			"@utils/*": [ "node_modules/@alanscodelog/utils/dist/*" ],
+		},
+		"outDir":"bin"
+	},
+	"types" : [
+		"jest",
+		// "node",
+	],
+	"lib": [
+		"esnext",
+		// "dom",
+	],
+	"include": [
+		"src/**/*.ts",
+		"tests/**/*.ts",
+	],
+	"exclude": [
+	]
+}

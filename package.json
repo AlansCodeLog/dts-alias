@@ -1,0 +1,94 @@
+{
+	"name": "dts-alias",
+	"description": "Tiny cli utility to fix unresolved type aliases in type definitions.",
+	"version": "0.0.0-semantically-released",
+	"bin": "bin/index.js",
+	"scripts": {
+		"babel:run": "npx babel-node --extensions \".ts,.js\" --",
+		"babel:run:dev": "npx onchange -i \"src/**/*.ts\" -- npx babel-node --extensions \".ts,.js\" --",
+
+		"build:babel": "npx babel --extensions \".ts,.js\" src --out-dir bin --source-maps inline",
+		"build:watch": "npm run build:babel -- --watch",
+		"build": "npm run build:babel",
+
+		"lint:eslint": "npx eslint \"src/**/*.ts\" --max-warnings=0",
+		"lint:types": "npx tsc --noEmit --pretty",
+		"lint:commits": "npx commitlint --from $(git rev-list HEAD --not --remotes | tail -1)^ --to HEAD --verbose",
+		"lint": "npm run lint:types && npm run lint:eslint",
+
+		"gen:exports": "npx indexit update",
+
+		"audit:prod": "yarn audit --groups dependencies",
+		"prepare": "npm run build"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run build:babel && npm run lint -- --no-cache",
+			"pre-push": "npm run lint:commits"
+		}
+	},
+	"dependencies": {
+		"@alanscodelog/utils": "1.2.0-beta.3",
+		"fast-glob": "3.2.4"
+	},
+	"devDependencies": {
+		"@types/node": "^14.14.8",
+
+		"semantic-release": "^17.2.3",
+		"@semantic-release/changelog": "^5.0.1",
+		"@semantic-release/commit-analyzer": "^8.0.1",
+		"@semantic-release/github": "^7.2.0",
+		"@semantic-release/npm": "^7.0.8",
+		"@semantic-release/release-notes-generator": "^9.0.1",
+		"conventional-changelog-conventionalcommits": "^4.5.0",
+		"@alanscodelog/semantic-release-config": "^1.0.1",
+		"@alanscodelog/commitlint-config": "^1.0.1",
+		"commitlint": "^11.0.0",
+
+		"@babel/cli": "^7.12.1",
+		"@babel/core": "^7.12.3",
+		"@babel/node": "^7.12.6",
+		"@babel/preset-env": "^7.12.1",
+		"@babel/preset-typescript": "^7.12.1",
+		"@babel/plugin-proposal-export-namespace-from": "^7.10.1",
+		"@babel/plugin-proposal-class-properties": "^7.12.1",
+		"babel-plugin-module-resolver": "^4.0.0",
+		"@alanscodelog/babel-preset": "^1.0.3",
+		"core-js": "^3.7.0",
+
+		"eslint": "^7.13.0",
+		"eslint-import-resolver-typescript": "^2.3.0",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-simple-import-sort": "^5.0.0",
+		"@typescript-eslint/eslint-plugin": "^4.8.1",
+		"@typescript-eslint/parser": "^4.8.1",
+		"@alanscodelog/eslint-config": "^1.3.1",
+
+		"typescript": "^4.0.5",
+		"@alanscodelog/tsconfigs": "^2.1.1",
+
+		"husky": "^4.3.0",
+		"indexit": "^1.2.0-beta.5",
+		"onchange": "^7.1.0",
+		"http-server": "^0.12.3"
+	},
+	"author": "Alan <alanscodelog@gmail.com>",
+	"repository": "https://github.com/alanscodelog/dts-alias",
+	"license": "MIT",
+	"files": [
+		"src",
+		"bin"
+	],
+	"release": { "extends": [ "@alanscodelog/semantic-release-config" ] },
+	"commitlint": { "extends": [ "@alanscodelog" ] },
+	"babel": { "presets": ["@alanscodelog"] },
+	"browserslist":"maintained node versions",
+	"engines": { "node": ">=10.0.0" },
+	"@comments": {
+		"scripts": {
+			"lint:commits": "Lints all unpushed commits in the active branch.",
+			"prepare": "Needed so that if we pull the package from git it will get built and installed properly."
+		}
+	}
+}
+
