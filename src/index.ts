@@ -3,7 +3,7 @@
 import { escape, pretty } from "@utils/utils"
 import { exec as _exec } from "child_process"
 import glob from "fast-glob"
-import fs from "fs/promises"
+import { promises as fs } from "fs"
 import path from "path"
 import util from "util"
 
