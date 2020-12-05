@@ -1,8 +1,10 @@
-*.log*
-/*lock*
+**/*.log*
+*lock*
 .vscode
 node_modules
-docs
 coverage
-dist
+
 bin
+
+# just in case
+dist
