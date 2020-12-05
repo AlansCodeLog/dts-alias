@@ -20,8 +20,6 @@
 
 		"actions:debug": "act -r -j build-only",
 
-		"gen:exports": "npx indexit update",
-
 		"audit:prod": "yarn audit --level moderate --groups dependencies",
 		"prepare": "npm run build"
 	},
@@ -32,49 +30,47 @@
 		}
 	},
 	"dependencies": {
-		"@alanscodelog/utils": "^1.2.0-beta.3",
+		"@alanscodelog/utils": "beta",
 		"fast-glob": "^3.2.4"
 	},
 	"devDependencies": {
-		"@types/node": "^14.14.8",
+		"@types/node": "^14.14.10",
 
-		"semantic-release": "^17.2.3",
+		"semantic-release": "^17.3.0",
 		"@semantic-release/changelog": "^5.0.1",
 		"@semantic-release/commit-analyzer": "^8.0.1",
 		"@semantic-release/github": "^7.2.0",
-		"@semantic-release/npm": "^7.0.8",
+		"@semantic-release/npm": "^7.0.9",
 		"@semantic-release/release-notes-generator": "^9.0.1",
 		"conventional-changelog-conventionalcommits": "^4.5.0",
-		"@alanscodelog/semantic-release-config": "^1.0.1",
-		"@alanscodelog/commitlint-config": "^1.0.1",
+		"@alanscodelog/semantic-release-config": "^1.0.2",
+		"@alanscodelog/commitlint-config": "^1.0.2",
 		"commitlint": "^11.0.0",
 
-		"@babel/cli": "^7.12.1",
-		"@babel/core": "^7.12.3",
+		"@babel/cli": "^7.12.8",
+		"@babel/core": "^7.12.9",
 		"@babel/node": "^7.12.6",
-		"@babel/preset-env": "^7.12.1",
-		"@babel/preset-typescript": "^7.12.1",
-		"@babel/plugin-proposal-export-namespace-from": "^7.10.1",
+		"@babel/preset-env": "^7.12.7",
+		"@babel/preset-typescript": "^7.12.7",
+		"@babel/plugin-proposal-export-namespace-from": "^7.12.1",
 		"@babel/plugin-proposal-class-properties": "^7.12.1",
 		"babel-plugin-module-resolver": "^4.0.0",
-		"@alanscodelog/babel-preset": "^1.0.3",
-		"core-js": "^3.7.0",
+		"@alanscodelog/babel-preset": "^1.0.4",
+		"core-js": "^3.8.0",
 
-		"eslint": "^7.13.0",
+		"eslint": "^7.15.0",
 		"eslint-import-resolver-typescript": "^2.3.0",
 		"eslint-plugin-import": "^2.22.1",
-		"eslint-plugin-simple-import-sort": "^5.0.0",
+		"eslint-plugin-simple-import-sort": "^6.0.1",
 		"eslint-plugin-jsdoc": "30.7.8",
-		"@typescript-eslint/eslint-plugin": "^4.8.1",
-		"@typescript-eslint/parser": "^4.8.1",
-		"@alanscodelog/eslint-config": "^1.4.0-beta.2",
+		"@typescript-eslint/eslint-plugin": "^4.9.0",
+		"@typescript-eslint/parser": "^4.9.0",
+		"@alanscodelog/eslint-config": "beta",
 
 		"typescript": "^4.1.2",
-		"@alanscodelog/tsconfigs": "^2.1.1",
+		"@alanscodelog/tsconfigs": "^2.1.2",
 
-		"husky": "^4.3.0",
-		"indexit": "^1.2.0-beta.5",
-		"onchange": "^7.1.0"
+		"husky": "^4.3.4"
 	},
 	"author": "Alan <alanscodelog@gmail.com>",
 	"repository": "https://github.com/alanscodelog/dts-alias",
