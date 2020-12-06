@@ -45,7 +45,6 @@ async function main(): Promise<void> {
 		paths.push({
 			path: path_string,
 			regex: new RegExp(regex, "g"),
-			// eslint-disable-next-line @typescript-eslint/naming-convention
 			get_path: (part: string) => {
 				let raw_path = tsconfig.compilerOptions.paths[path_string][0].replace("*", part)
 				let parts = path.normalize(raw_path).split(path.sep)
