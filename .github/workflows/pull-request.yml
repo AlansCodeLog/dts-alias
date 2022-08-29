@@ -13,8 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # awaiting https://github.com/actions/setup-node/issues/26 so we can just set this to [lts, latest]
-        node-version: [10.x, 14.x]
+        node-version: ["lts/*", "latest"]
 
     steps:
 
@@ -39,7 +38,7 @@ jobs:
     - run: "echo Yarn Cache Hit: ${{ steps.yarn-cache.outputs.cache-hit }}"
 
     - name: Setting Up Node.js (${{ matrix.node-version }})
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     # endregion
