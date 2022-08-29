@@ -13,8 +13,8 @@
 		"outDir":"bin"
 	},
 	"types" : [
-		"jest",
-		// "node",
+	// 	"jest",
+		"node",
 	],
 	"lib": [
 		"esnext",

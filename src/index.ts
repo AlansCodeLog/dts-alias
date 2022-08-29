@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { escape, pretty } from "@utils/utils"
+import { escapeRegex, pretty } from "@utils/utils"
 import { exec as _exec } from "child_process"
 import glob from "fast-glob"
 import { promises as fs } from "fs"
@@ -37,8 +37,8 @@ async function main(): Promise<void> {
 
 	for (const pathString of Object.keys(tsconfig.compilerOptions.paths)) {
 		const pathParts = pathString.split("*")
-		const start = escape(pathParts[0])
-		const end = escape(pathParts[1])
+		const start = escapeRegex(pathParts[0])
+		const end = escapeRegex(pathParts[1])
 
 
 		const regex = `(import .*? ('|"))${start}(.*?)(${end}\\2)`
